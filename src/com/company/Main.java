@@ -7,11 +7,20 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         Scanner sc = new Scanner(System.in);
-        int setLength = 0;
-        int[] arr_a = {-1,0,1,2,3,4,5,6,7,8,9,10,12,34};
-        int[] arr_b = {2,4,6,5,8,10,33};
-        Set a = new Set(arr_a);
-        Set b = new Set(arr_b);
+        System.out.println("Enter a number for length of set A: ");
+        int setLength = sc.nextInt();
+        while(setLength < 10 || setLength > 20) {
+            System.out.println("Enter a number for length of set A between 10 and 20: ");
+            setLength = sc.nextInt();
+        }
+        Set a = new Set(setLength);
+        System.out.println("Enter a number for length of set B: ");
+        setLength = sc.nextInt();
+        while(setLength < 10 || setLength > 20) {
+            System.out.println("Enter a number for length of set B between 10 and 20: ");
+            setLength = sc.nextInt();
+        }
+        Set b = new Set(setLength);
         System.out.println(a.toString());
         System.out.println(b.toString());
         Set.sort(b);
