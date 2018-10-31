@@ -62,8 +62,11 @@ public class Set
         for (int x = 0; x < count; x ++){
             res[x] = c[x];
         }
-        return new Set(res);
+        Set ret = new Set(res);
+        Set.sort(ret);
+        return ret;
     }
+
     static Set difference (Set s1, Set s2) {
         int[] a = s1.array;
         int[] b = s2.array;
@@ -86,13 +89,19 @@ public class Set
         for (int x = 0; x < count; x ++){
             res[x] = c[x];
         }
-        return new Set(res);
+        Set ret = new Set(res);
+        Set.sort(ret);
+        return ret;
     }
     static Set supplement (Set s1, Set s2) {
-            return Set.difference(s1,s2);
+        if(Set.intersection(s1,s2).getLength() == s2.getLength()) {
+            return Set.difference(s1, s2);
         }
-    public void sort () {
-        int[] nums = this.array;
+        else return new Set(0);
+        }
+
+    static void sort (Set s1) {
+        int[] nums = s1.array;
         for(int currentPlace = 0;currentPlace<nums.length-1;currentPlace++){
             int smallest =  Integer.MAX_VALUE;
             int smallestAt =  currentPlace+1;
@@ -108,7 +117,7 @@ public class Set
 
 
          }
-        this.array = nums;
+        s1.array = nums;
     }
     static Set union (Set s1, Set s2) {
         int[] a = s1.array;
@@ -147,7 +156,9 @@ public class Set
         for(int x = 0; x < count; x++) {
             res[x] = tmp[x];
         }
-        return new Set(res);
+        Set ret = new Set(res);
+        Set.sort(ret);
+        return ret;
     }
 
 
